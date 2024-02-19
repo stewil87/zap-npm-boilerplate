@@ -1,0 +1,23 @@
+{
+  "name": "zap-npm-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "scss": "sass --style=compressed src/scss/style.scss build/css/style.css",
+    "js": "npm run js:concat && npm run js:uglify",
+    "js:concat": "concat -o build/js/main.js ./src/js/another.js ./src/js/main.js",
+    "js:uglify": "uglifyjs --compress --mangle --output build/js/main.min.js -- build/js/main.js",
+    "watch": "npm-run-all --parallel change:*",
+    "change:js": "onchange \"src/js/**/*.js\" -- npm run js",
+    "change:css": "onchange \"src/scss/**/*.scss\" -- npm run scss"
+  },
+  "author": "Stefan Wilhelm",
+  "license": "",
+  "devDependencies": {
+    "concat": "^1.0.3",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "sass": "^1.71.0",
+    "uglify-js": "^3.17.4"
+  }
+}
